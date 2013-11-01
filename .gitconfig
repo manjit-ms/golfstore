@@ -1,0 +1,5 @@
+[http]
+	proxy = 10.1.3.72:8080
+[user]
+	name = manjit_ms
+	email = manjit_ms@hotmail.com

@@ -1,0 +1,481 @@
+mysql> select * from staff;
++------+-------+-------+-------------------------+--------------+------------------+-----+------------+----------+-----------+-----+
+| Sno  | Fname | Lname | Address                 | TelNo        | Position         | Sex | DOB        | SALARY   | NIN       | Bno |
++------+-------+-------+-------------------------+--------------+------------------+-----+------------+----------+-----------+-----+
+| SA9  | Mary  | Howe  | 2 Elm Place,Aberdeen    | NULL         | Assistant        | F   | 1970-02-19 |  9000.00 | WM532187D | B7  |
+| SG14 | David | Ford  | 63 Ashby St,Glasgow     | 0141-3392177 | Deputy           | M   | 1958-03-24 | 18000.00 | WL220658D | B3  |
+| SG37 | Ann   | Beech | 81 George St,Glasgow    | 0141-8483345 | Senior Assistant | F   | 1960-01-10 | 12000.00 | Wl432514C | B3  |
+| SG5  | Susan | Brand | 5 Gt Western Rd,Glasgow | 0141-3342001 | Manager          | F   | 1940-06-03 | 24000.00 | WK588932E | B3  |
+| SL21 | John  | White | 19 Taylor St,London     | 0171-8445112 | Manager          | M   | 1945-10-01 | 30000.00 | WK442011B | B5  |
+| SL41 | Julie | Lee   | 28 Malvern St, Kilburn  | 0181-5543541 | Assistant        | F   | 1965-06-13 |  9000.00 | WA290573K | B5  |
++------+-------+-------+-------------------------+--------------+------------------+-----+------------+----------+-----------+-----+
+6 rows in set (0.00 sec)
+
+mysql> show columns from staff;
++----------+--------------+------+-----+---------+-------+
+| Field    | Type         | Null | Key | Default | Extra |
++----------+--------------+------+-----+---------+-------+
+| Sno      | varchar(4)   | NO   | PRI | NULL    |       |
+| Fname    | varchar(16)  | NO   |     | NULL    |       |
+| Lname    | varchar(16)  | NO   |     | NULL    |       |
+| Address  | varchar(40)  | YES  |     | NULL    |       |
+| TelNo    | varchar(20)  | YES  |     | NULL    |       |
+| Position | varchar(20)  | NO   |     | NULL    |       |
+| Sex      | varchar(1)   | NO   |     | NULL    |       |
+| DOB      | date         | NO   |     | NULL    |       |
+| SALARY   | decimal(9,2) | YES  |     | NULL    |       |
+| NIN      | varchar(9)   | NO   |     | NULL    |       |
+| Bno      | varchar(4)   | NO   |     | NULL    |       |
++----------+--------------+------+-----+---------+-------+
+11 rows in set (0.02 sec)
+
+mysql> select * from staff
+    -> ;
++------+-------+-------+-------------------------+--------------+------------------+-----+------------+----------+-----------+-----+
+| Sno  | Fname | Lname | Address                 | TelNo        | Position         | Sex | DOB        | SALARY   | NIN       | Bno |
++------+-------+-------+-------------------------+--------------+------------------+-----+------------+----------+-----------+-----+
+| SA9  | Mary  | Howe  | 2 Elm Place,Aberdeen    | NULL         | Assistant        | F   | 1970-02-19 |  9000.00 | WM532187D | B7  |
+| SG14 | David | Ford  | 63 Ashby St,Glasgow     | 0141-3392177 | Deputy           | M   | 1958-03-24 | 18000.00 | WL220658D | B3  |
+| SG37 | Ann   | Beech | 81 George St,Glasgow    | 0141-8483345 | Senior Assistant | F   | 1960-01-10 | 12000.00 | Wl432514C | B3  |
+| SG5  | Susan | Brand | 5 Gt Western Rd,Glasgow | 0141-3342001 | Manager          | F   | 1940-06-03 | 24000.00 | WK588932E | B3  |
+| SL21 | John  | White | 19 Taylor St,London     | 0171-8445112 | Manager          | M   | 1945-10-01 | 30000.00 | WK442011B | B5  |
+| SL41 | Julie | Lee   | 28 Malvern St, Kilburn  | 0181-5543541 | Assistant        | F   | 1965-06-13 |  9000.00 | WA290573K | B5  |
++------+-------+-------+-------------------------+--------------+------------------+-----+------------+----------+-----------+-----+
+6 rows in set (0.00 sec)
+
+mysql> select * from staff where position="deputy";
+ERROR 1046 (3D000): No database selected
+mysql> select * from staff;
+ERROR 1046 (3D000): No database selected
+mysql> use databases;
+ERROR 1049 (42000): Unknown database 'databases'
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| dreamhome          |
+| mysql              |
+| performance_schema |
+| test               |
++--------------------+
+5 rows in set (0.00 sec)
+
+mysql> use dreamhome;
+Database changed
+mysql> describe dreamhome;
+ERROR 1146 (42S02): Table 'dreamhome.dreamhome' doesn't exist
+mysql> use dreamhome;
+Database changed
+mysql> show tables;
++---------------------+
+| Tables_in_dreamhome |
++---------------------+
+| branch              |
+| owner               |
+| property_for_rent   |
+| renter              |
+| staff               |
+| viewing             |
++---------------------+
+6 rows in set (0.00 sec)
+
+mysql> describe staff;
++----------+--------------+------+-----+---------+-------+
+| Field    | Type         | Null | Key | Default | Extra |
++----------+--------------+------+-----+---------+-------+
+| Sno      | varchar(4)   | NO   | PRI | NULL    |       |
+| Fname    | varchar(16)  | NO   |     | NULL    |       |
+| Lname    | varchar(16)  | NO   |     | NULL    |       |
+| Address  | varchar(40)  | YES  |     | NULL    |       |
+| TelNo    | varchar(20)  | YES  |     | NULL    |       |
+| Position | varchar(20)  | NO   |     | NULL    |       |
+| Sex      | varchar(1)   | NO   |     | NULL    |       |
+| DOB      | date         | NO   |     | NULL    |       |
+| SALARY   | decimal(9,2) | YES  |     | NULL    |       |
+| NIN      | varchar(9)   | NO   |     | NULL    |       |
+| Bno      | varchar(4)   | NO   |     | NULL    |       |
++----------+--------------+------+-----+---------+-------+
+11 rows in set (0.02 sec)
+
+mysql> select * from staff;
++------+-------+-------+-------------------------+--------------+------------------+-----+------------+----------+-----------+-----+
+| Sno  | Fname | Lname | Address                 | TelNo        | Position         | Sex | DOB        | SALARY   | NIN       | Bno |
++------+-------+-------+-------------------------+--------------+------------------+-----+------------+----------+-----------+-----+
+| SA9  | Mary  | Howe  | 2 Elm Place,Aberdeen    | NULL         | Assistant        | F   | 1970-02-19 |  9000.00 | WM532187D | B7  |
+| SG14 | David | Ford  | 63 Ashby St,Glasgow     | 0141-3392177 | Deputy           | M   | 1958-03-24 | 18000.00 | WL220658D | B3  |
+| SG37 | Ann   | Beech | 81 George St,Glasgow    | 0141-8483345 | Senior Assistant | F   | 1960-01-10 | 12000.00 | Wl432514C | B3  |
+| SG5  | Susan | Brand | 5 Gt Western Rd,Glasgow | 0141-3342001 | Manager          | F   | 1940-06-03 | 24000.00 | WK588932E | B3  |
+| SL21 | John  | White | 19 Taylor St,London     | 0171-8445112 | Manager          | M   | 1945-10-01 | 30000.00 | WK442011B | B5  |
+| SL41 | Julie | Lee   | 28 Malvern St, Kilburn  | 0181-5543541 | Assistant        | F   | 1965-06-13 |  9000.00 | WA290573K | B5  |
++------+-------+-------+-------------------------+--------------+------------------+-----+------------+----------+-----------+-----+
+6 rows in set (0.00 sec)
+
+mysql> select * from staff where position="deputy";
++------+-------+-------+---------------------+--------------+----------+-----+------------+----------+-----------+-----+
+| Sno  | Fname | Lname | Address             | TelNo        | Position | Sex | DOB        | SALARY   | NIN       | Bno |
++------+-------+-------+---------------------+--------------+----------+-----+------------+----------+-----------+-----+
+| SG14 | David | Ford  | 63 Ashby St,Glasgow | 0141-3392177 | Deputy   | M   | 1958-03-24 | 18000.00 | WL220658D | B3  |
++------+-------+-------+---------------------+--------------+----------+-----+------------+----------+-----------+-----+
+1 row in set (0.02 sec)
+
+mysql> select * from staff where fname="mary";
++-----+-------+-------+----------------------+-------+-----------+-----+------------+---------+-----------+-----+
+| Sno | Fname | Lname | Address              | TelNo | Position  | Sex | DOB        | SALARY  | NIN       | Bno |
++-----+-------+-------+----------------------+-------+-----------+-----+------------+---------+-----------+-----+
+| SA9 | Mary  | Howe  | 2 Elm Place,Aberdeen | NULL  | Assistant | F   | 1970-02-19 | 9000.00 | WM532187D | B7  |
++-----+-------+-------+----------------------+-------+-----------+-----+------------+---------+-----------+-----+
+1 row in set (0.00 sec)
+
+mysql> select * from staff where fname!="mary";
++------+-------+-------+-------------------------+--------------+------------------+-----+------------+----------+-----------+-----+
+| Sno  | Fname | Lname | Address                 | TelNo        | Position         | Sex | DOB        | SALARY   | NIN       | Bno |
++------+-------+-------+-------------------------+--------------+------------------+-----+------------+----------+-----------+-----+
+| SG14 | David | Ford  | 63 Ashby St,Glasgow     | 0141-3392177 | Deputy           | M   | 1958-03-24 | 18000.00 | WL220658D | B3  |
+| SG37 | Ann   | Beech | 81 George St,Glasgow    | 0141-8483345 | Senior Assistant | F   | 1960-01-10 | 12000.00 | Wl432514C | B3  |
+| SG5  | Susan | Brand | 5 Gt Western Rd,Glasgow | 0141-3342001 | Manager          | F   | 1940-06-03 | 24000.00 | WK588932E | B3  |
+| SL21 | John  | White | 19 Taylor St,London     | 0171-8445112 | Manager          | M   | 1945-10-01 | 30000.00 | WK442011B | B5  |
+| SL41 | Julie | Lee   | 28 Malvern St, Kilburn  | 0181-5543541 | Assistant        | F   | 1965-06-13 |  9000.00 | WA290573K | B5  |
++------+-------+-------+-------------------------+--------------+------------------+-----+------------+----------+-----------+-----+
+5 rows in set (0.02 sec)
+
+mysql> select * from staff where name like "j%";
+ERROR 1054 (42S22): Unknown column 'name' in 'where clause'
+mysql> select * from staff limit 2;
++------+-------+-------+----------------------+--------------+-----------+-----+------------+----------+-----------+-----+
+| Sno  | Fname | Lname | Address              | TelNo        | Position  | Sex | DOB        | SALARY   | NIN       | Bno |
++------+-------+-------+----------------------+--------------+-----------+-----+------------+----------+-----------+-----+
+| SA9  | Mary  | Howe  | 2 Elm Place,Aberdeen | NULL         | Assistant | F   | 1970-02-19 |  9000.00 | WM532187D | B7  |
+| SG14 | David | Ford  | 63 Ashby St,Glasgow  | 0141-3392177 | Deputy    | M   | 1958-03-24 | 18000.00 | WL220658D | B3  |
++------+-------+-------+----------------------+--------------+-----------+-----+------------+----------+-----------+-----+
+2 rows in set (0.00 sec)
+
+mysql> select * from staff where rec rlike "^j";
+ERROR 1054 (42S22): Unknown column 'rec' in 'where clause'
+mysql> select distinct position from staff;
++------------------+
+| position         |
++------------------+
+| Assistant        |
+| Deputy           |
+| Senior Assistant |
+| Manager          |
++------------------+
+4 rows in set (0.01 sec)
+
+mysql> select * from staff order by fname asc;
++------+-------+-------+-------------------------+--------------+------------------+-----+------------+----------+-----------+-----+
+| Sno  | Fname | Lname | Address                 | TelNo        | Position         | Sex | DOB        | SALARY   | NIN       | Bno |
++------+-------+-------+-------------------------+--------------+------------------+-----+------------+----------+-----------+-----+
+| SG37 | Ann   | Beech | 81 George St,Glasgow    | 0141-8483345 | Senior Assistant | F   | 1960-01-10 | 12000.00 | Wl432514C | B3  |
+| SG14 | David | Ford  | 63 Ashby St,Glasgow     | 0141-3392177 | Deputy           | M   | 1958-03-24 | 18000.00 | WL220658D | B3  |
+| SL21 | John  | White | 19 Taylor St,London     | 0171-8445112 | Manager          | M   | 1945-10-01 | 30000.00 | WK442011B | B5  |
+| SL41 | Julie | Lee   | 28 Malvern St, Kilburn  | 0181-5543541 | Assistant        | F   | 1965-06-13 |  9000.00 | WA290573K | B5  |
+| SA9  | Mary  | Howe  | 2 Elm Place,Aberdeen    | NULL         | Assistant        | F   | 1970-02-19 |  9000.00 | WM532187D | B7  |
+| SG5  | Susan | Brand | 5 Gt Western Rd,Glasgow | 0141-3342001 | Manager          | F   | 1940-06-03 | 24000.00 | WK588932E | B3  |
++------+-------+-------+-------------------------+--------------+------------------+-----+------------+----------+-----------+-----+
+6 rows in set (0.00 sec)
+
+mysql> select * from staff order by fname desc;
++------+-------+-------+-------------------------+--------------+------------------+-----+------------+----------+-----------+-----+
+| Sno  | Fname | Lname | Address                 | TelNo        | Position         | Sex | DOB        | SALARY   | NIN       | Bno |
++------+-------+-------+-------------------------+--------------+------------------+-----+------------+----------+-----------+-----+
+| SG5  | Susan | Brand | 5 Gt Western Rd,Glasgow | 0141-3342001 | Manager          | F   | 1940-06-03 | 24000.00 | WK588932E | B3  |
+| SA9  | Mary  | Howe  | 2 Elm Place,Aberdeen    | NULL         | Assistant        | F   | 1970-02-19 |  9000.00 | WM532187D | B7  |
+| SL41 | Julie | Lee   | 28 Malvern St, Kilburn  | 0181-5543541 | Assistant        | F   | 1965-06-13 |  9000.00 | WA290573K | B5  |
+| SL21 | John  | White | 19 Taylor St,London     | 0171-8445112 | Manager          | M   | 1945-10-01 | 30000.00 | WK442011B | B5  |
+| SG14 | David | Ford  | 63 Ashby St,Glasgow     | 0141-3392177 | Deputy           | M   | 1958-03-24 | 18000.00 | WL220658D | B3  |
+| SG37 | Ann   | Beech | 81 George St,Glasgow    | 0141-8483345 | Senior Assistant | F   | 1960-01-10 | 12000.00 | Wl432514C | B3  |
++------+-------+-------+-------------------------+--------------+------------------+-----+------------+----------+-----------+-----+
+6 rows in set (0.00 sec)
+
+mysql> select count (*) from staff;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '*) from staff' at line 1
+mysql> select count from staff;
+ERROR 1054 (42S22): Unknown column 'count' in 'field list'
+mysql> select count(position) from staff;
++-----------------+
+| count(position) |
++-----------------+
+|               6 |
++-----------------+
+1 row in set (0.02 sec)
+
+mysql> select sum(position) from staff;
++---------------+
+| sum(position) |
++---------------+
+|             0 |
++---------------+
+1 row in set, 6 warnings (0.00 sec)
+
+mysql> select sum(telno) from staff;
++------------+
+| sum(telno) |
++------------+
+|        775 |
++------------+
+1 row in set, 5 warnings (0.00 sec)
+
+mysql> select count(*) from staff
+    -> ;
++----------+
+| count(*) |
++----------+
+|        6 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> show database;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'database' at line 1
+mysql> use dreamhome;
+Database changed
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| information_schema |
+| dreamhome          |
+| mysql              |
+| performance_schema |
+| test               |
++--------------------+
+5 rows in set (0.00 sec)
+
+mysql> alter table staff add column age varchar(3);
+Query OK, 0 rows affected (0.30 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from staff;
++------+-------+-------+-------------------------+--------------+------------------+-----+------------+----------+-----------+-----+------+
+| Sno  | Fname | Lname | Address                 | TelNo        | Position         | Sex | DOB        | SALARY   | NIN       | Bno | age  |
++------+-------+-------+-------------------------+--------------+------------------+-----+------------+----------+-----------+-----+------+
+| SA9  | Mary  | Howe  | 2 Elm Place,Aberdeen    | NULL         | Assistant        | F   | 1970-02-19 |  9000.00 | WM532187D | B7  | NULL |
+| SG14 | David | Ford  | 63 Ashby St,Glasgow     | 0141-3392177 | Deputy           | M   | 1958-03-24 | 18000.00 | WL220658D | B3  | NULL |
+| SG37 | Ann   | Beech | 81 George St,Glasgow    | 0141-8483345 | Senior Assistant | F   | 1960-01-10 | 12000.00 | Wl432514C | B3  | NULL |
+| SG5  | Susan | Brand | 5 Gt Western Rd,Glasgow | 0141-3342001 | Manager          | F   | 1940-06-03 | 24000.00 | WK588932E | B3  | NULL |
+| SL21 | John  | White | 19 Taylor St,London     | 0171-8445112 | Manager          | M   | 1945-10-01 | 30000.00 | WK442011B | B5  | NULL |
+| SL41 | Julie | Lee   | 28 Malvern St, Kilburn  | 0181-5543541 | Assistant        | F   | 1965-06-13 |  9000.00 | WA290573K | B5  | NULL |
++------+-------+-------+-------------------------+--------------+------------------+-----+------------+----------+-----------+-----+------+
+6 rows in set (0.00 sec)
+
+mysql> alter table drop column bno;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'drop column bno' at line 1
+mysql> alter table drop column Bno;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'drop column Bno' at line 1
+mysql> alter table drop column age;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'drop column age' at line 1
+mysql> alter table staff drop column bno;
+Query OK, 0 rows affected (0.05 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> select * from staff;
++------+-------+-------+-------------------------+--------------+------------------+-----+------------+----------+-----------+------+
+| Sno  | Fname | Lname | Address                 | TelNo        | Position         | Sex | DOB        | SALARY   | NIN       | age  |
++------+-------+-------+-------------------------+--------------+------------------+-----+------------+----------+-----------+------+
+| SA9  | Mary  | Howe  | 2 Elm Place,Aberdeen    | NULL         | Assistant        | F   | 1970-02-19 |  9000.00 | WM532187D | NULL |
+| SG14 | David | Ford  | 63 Ashby St,Glasgow     | 0141-3392177 | Deputy           | M   | 1958-03-24 | 18000.00 | WL220658D | NULL |
+| SG37 | Ann   | Beech | 81 George St,Glasgow    | 0141-8483345 | Senior Assistant | F   | 1960-01-10 | 12000.00 | Wl432514C | NULL |
+| SG5  | Susan | Brand | 5 Gt Western Rd,Glasgow | 0141-3342001 | Manager          | F   | 1940-06-03 | 24000.00 | WK588932E | NULL |
+| SL21 | John  | White | 19 Taylor St,London     | 0171-8445112 | Manager          | M   | 1945-10-01 | 30000.00 | WK442011B | NULL |
+| SL41 | Julie | Lee   | 28 Malvern St, Kilburn  | 0181-5543541 | Assistant        | F   | 1965-06-13 |  9000.00 | WA290573K | NULL |
++------+-------+-------+-------------------------+--------------+------------------+-----+------------+----------+-----------+------+
+6 rows in set (0.00 sec)
+
+mysql> alter table staff change age staffage varchar(4);
+Query OK, 6 rows affected (0.03 sec)
+Records: 6  Duplicates: 0  Warnings: 0
+
+mysql> slect * from staff
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'slect * from staff' at line 1
+mysql> select * from staff;
++------+-------+-------+-------------------------+--------------+------------------+-----+------------+----------+-----------+----------+
+| Sno  | Fname | Lname | Address                 | TelNo        | Position         | Sex | DOB        | SALARY   | NIN       | staffage |
++------+-------+-------+-------------------------+--------------+------------------+-----+------------+----------+-----------+----------+
+| SA9  | Mary  | Howe  | 2 Elm Place,Aberdeen    | NULL         | Assistant        | F   | 1970-02-19 |  9000.00 | WM532187D | NULL     |
+| SG14 | David | Ford  | 63 Ashby St,Glasgow     | 0141-3392177 | Deputy           | M   | 1958-03-24 | 18000.00 | WL220658D | NULL     |
+| SG37 | Ann   | Beech | 81 George St,Glasgow    | 0141-8483345 | Senior Assistant | F   | 1960-01-10 | 12000.00 | Wl432514C | NULL     |
+| SG5  | Susan | Brand | 5 Gt Western Rd,Glasgow | 0141-3342001 | Manager          | F   | 1940-06-03 | 24000.00 | WK588932E | NULL     |
+| SL21 | John  | White | 19 Taylor St,London     | 0171-8445112 | Manager          | M   | 1945-10-01 | 30000.00 | WK442011B | NULL     |
+| SL41 | Julie | Lee   | 28 Malvern St, Kilburn  | 0181-5543541 | Assistant        | F   | 1965-06-13 |  9000.00 | WA290573K | NULL     |
++------+-------+-------+-------------------------+--------------+------------------+-----+------------+----------+-----------+----------+
+6 rows in set (0.00 sec)
+
+mysql> alter table staff change staffage age varchar(3);
+Query OK, 6 rows affected (0.01 sec)
+Records: 6  Duplicates: 0  Warnings: 0
+
+mysql> select * from staff;
++------+-------+-------+-------------------------+--------------+------------------+-----+------------+----------+-----------+------+
+| Sno  | Fname | Lname | Address                 | TelNo        | Position         | Sex | DOB        | SALARY   | NIN       | age  |
++------+-------+-------+-------------------------+--------------+------------------+-----+------------+----------+-----------+------+
+| SA9  | Mary  | Howe  | 2 Elm Place,Aberdeen    | NULL         | Assistant        | F   | 1970-02-19 |  9000.00 | WM532187D | NULL |
+| SG14 | David | Ford  | 63 Ashby St,Glasgow     | 0141-3392177 | Deputy           | M   | 1958-03-24 | 18000.00 | WL220658D | NULL |
+| SG37 | Ann   | Beech | 81 George St,Glasgow    | 0141-8483345 | Senior Assistant | F   | 1960-01-10 | 12000.00 | Wl432514C | NULL |
+| SG5  | Susan | Brand | 5 Gt Western Rd,Glasgow | 0141-3342001 | Manager          | F   | 1940-06-03 | 24000.00 | WK588932E | NULL |
+| SL21 | John  | White | 19 Taylor St,London     | 0171-8445112 | Manager          | M   | 1945-10-01 | 30000.00 | WK442011B | NULL |
+| SL41 | Julie | Lee   | 28 Malvern St, Kilburn  | 0181-5543541 | Assistant        | F   | 1965-06-13 |  9000.00 | WA290573K | NULL |
++------+-------+-------+-------------------------+--------------+------------------+-----+------------+----------+-----------+------+
+6 rows in set (0.00 sec)
+
+mysql> alter table staff modify age varchar(5);
+Query OK, 6 rows affected (0.05 sec)
+Records: 6  Duplicates: 0  Warnings: 0
+
+mysql> alter table staff modify age varchar(8);
+Query OK, 6 rows affected (0.03 sec)
+Records: 6  Duplicates: 0  Warnings: 0
+
+mysql> select * from staff;
++------+-------+-------+-------------------------+--------------+------------------+-----+------------+----------+-----------+------+
+| Sno  | Fname | Lname | Address                 | TelNo        | Position         | Sex | DOB        | SALARY   | NIN       | age  |
++------+-------+-------+-------------------------+--------------+------------------+-----+------------+----------+-----------+------+
+| SA9  | Mary  | Howe  | 2 Elm Place,Aberdeen    | NULL         | Assistant        | F   | 1970-02-19 |  9000.00 | WM532187D | NULL |
+| SG14 | David | Ford  | 63 Ashby St,Glasgow     | 0141-3392177 | Deputy           | M   | 1958-03-24 | 18000.00 | WL220658D | NULL |
+| SG37 | Ann   | Beech | 81 George St,Glasgow    | 0141-8483345 | Senior Assistant | F   | 1960-01-10 | 12000.00 | Wl432514C | NULL |
+| SG5  | Susan | Brand | 5 Gt Western Rd,Glasgow | 0141-3342001 | Manager          | F   | 1940-06-03 | 24000.00 | WK588932E | NULL |
+| SL21 | John  | White | 19 Taylor St,London     | 0171-8445112 | Manager          | M   | 1945-10-01 | 30000.00 | WK442011B | NULL |
+| SL41 | Julie | Lee   | 28 Malvern St, Kilburn  | 0181-5543541 | Assistant        | F   | 1965-06-13 |  9000.00 | WA290573K | NULL |
++------+-------+-------+-------------------------+--------------+------------------+-----+------------+----------+-----------+------+
+6 rows in set (0.00 sec)
+
+mysql> create table student name(15),class(12),age(3),admission date;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'name(15),class(12),age(3),admission date' at line 1
+mysql> create table college name(15),class(12),age(3),admission date;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'name(15),class(12),age(3),admission date' at line 1
+mysql> create table college (name(15),class(12),age(3),admission date);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(15),class(12),age(3),admission date)' at line 1
+mysql> create table [college] (name(15),class(12),age(3),admission Date);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '[college] (name(15),class(12),age(3),admission Date)' at line 1
+mysql> tee h:/myfiles/results.txt;
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> 
+mysql> set password=12121212;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '12121212' at line 1
+mysql> set password=12121212
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '12121212' at line 1
+mysql> create table college (name varchar(15), age(int), admission Date, class varchar(8))
+    -> ;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '(int), admission Date, class varchar(8))' at line 1
+mysql> show tables;
++---------------------+
+| Tables_in_dreamhome |
++---------------------+
+| branch              |
+| owner               |
+| property_for_rent   |
+| renter              |
+| staff               |
+| viewing             |
++---------------------+
+6 rows in set (0.00 sec)
+
+mysql> describe staff;
++----------+--------------+------+-----+---------+-------+
+| Field    | Type         | Null | Key | Default | Extra |
++----------+--------------+------+-----+---------+-------+
+| Sno      | varchar(4)   | NO   | PRI | NULL    |       |
+| Fname    | varchar(16)  | NO   |     | NULL    |       |
+| Lname    | varchar(16)  | NO   |     | NULL    |       |
+| Address  | varchar(40)  | YES  |     | NULL    |       |
+| TelNo    | varchar(20)  | YES  |     | NULL    |       |
+| Position | varchar(20)  | NO   |     | NULL    |       |
+| Sex      | varchar(1)   | NO   |     | NULL    |       |
+| DOB      | date         | NO   |     | NULL    |       |
+| SALARY   | decimal(9,2) | YES  |     | NULL    |       |
+| NIN      | varchar(9)   | NO   |     | NULL    |       |
+| age      | varchar(8)   | YES  |     | NULL    |       |
++----------+--------------+------+-----+---------+-------+
+11 rows in set (0.02 sec)
+
+mysql> alter table staff add(8,hg,hh,hyg,877,sale,m,12/08/1999,878,87,89);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '8,hg,hh,hyg,877,sale,m,12/08/1999,878,87,89)' at line 1
+mysql> select distinct from staff;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'from staff' at line 1
+mysql> select distinct * from staff;
++------+-------+-------+-------------------------+--------------+------------------+-----+------------+----------+-----------+------+
+| Sno  | Fname | Lname | Address                 | TelNo        | Position         | Sex | DOB        | SALARY   | NIN       | age  |
++------+-------+-------+-------------------------+--------------+------------------+-----+------------+----------+-----------+------+
+| SA9  | Mary  | Howe  | 2 Elm Place,Aberdeen    | NULL         | Assistant        | F   | 1970-02-19 |  9000.00 | WM532187D | NULL |
+| SG14 | David | Ford  | 63 Ashby St,Glasgow     | 0141-3392177 | Deputy           | M   | 1958-03-24 | 18000.00 | WL220658D | NULL |
+| SG37 | Ann   | Beech | 81 George St,Glasgow    | 0141-8483345 | Senior Assistant | F   | 1960-01-10 | 12000.00 | Wl432514C | NULL |
+| SG5  | Susan | Brand | 5 Gt Western Rd,Glasgow | 0141-3342001 | Manager          | F   | 1940-06-03 | 24000.00 | WK588932E | NULL |
+| SL21 | John  | White | 19 Taylor St,London     | 0171-8445112 | Manager          | M   | 1945-10-01 | 30000.00 | WK442011B | NULL |
+| SL41 | Julie | Lee   | 28 Malvern St, Kilburn  | 0181-5543541 | Assistant        | F   | 1965-06-13 |  9000.00 | WA290573K | NULL |
++------+-------+-------+-------------------------+--------------+------------------+-----+------------+----------+-----------+------+
+6 rows in set (0.00 sec)
+
+mysql> select distinct position from staff;
++------------------+
+| position         |
++------------------+
+| Assistant        |
+| Deputy           |
+| Senior Assistant |
+| Manager          |
++------------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from staff;
++------+-------+-------+-------------------------+--------------+------------------+-----+------------+----------+-----------+-----+
+| Sno  | Fname | Lname | Address                 | TelNo        | Position         | Sex | DOB        | SALARY   | NIN       | Bno |
++------+-------+-------+-------------------------+--------------+------------------+-----+------------+----------+-----------+-----+
+| SA9  | Mary  | Howe  | 2 Elm Place,Aberdeen    | NULL         | Assistant        | F   | 1970-02-19 |  9000.00 | WM532187D | B7  |
+| SG14 | David | Ford  | 63 Ashby St,Glasgow     | 0141-3392177 | Deputy           | M   | 1958-03-24 | 18000.00 | WL220658D | B3  |
+| SG37 | Ann   | Beech | 81 George St,Glasgow    | 0141-8483345 | Senior Assistant | F   | 1960-01-10 | 12000.00 | Wl432514C | B3  |
+| SG5  | Susan | Brand | 5 Gt Western Rd,Glasgow | 0141-3342001 | Manager          | F   | 1940-06-03 | 24000.00 | WK588932E | B3  |
+| SL21 | John  | White | 19 Taylor St,London     | 0171-8445112 | Manager          | M   | 1945-10-01 | 30000.00 | WK442011B | B5  |
+| SL41 | Julie | Lee   | 28 Malvern St, Kilburn  | 0181-5543541 | Assistant        | F   | 1965-06-13 |  9000.00 | WA290573K | B5  |
++------+-------+-------+-------------------------+--------------+------------------+-----+------------+----------+-----------+-----+
+6 rows in set (0.00 sec)
+
+mysql> describe staff;
++----------+--------------+------+-----+---------+-------+
+| Field    | Type         | Null | Key | Default | Extra |
++----------+--------------+------+-----+---------+-------+
+| Sno      | varchar(4)   | NO   | PRI | NULL    |       |
+| Fname    | varchar(16)  | NO   |     | NULL    |       |
+| Lname    | varchar(16)  | NO   |     | NULL    |       |
+| Address  | varchar(40)  | YES  |     | NULL    |       |
+| TelNo    | varchar(20)  | YES  |     | NULL    |       |
+| Position | varchar(20)  | NO   |     | NULL    |       |
+| Sex      | varchar(1)   | NO   |     | NULL    |       |
+| DOB      | date         | NO   |     | NULL    |       |
+| SALARY   | decimal(9,2) | YES  |     | NULL    |       |
+| NIN      | varchar(9)   | NO   |     | NULL    |       |
+| Bno      | varchar(4)   | NO   |     | NULL    |       |
++----------+--------------+------+-----+---------+-------+
+11 rows in set (0.00 sec)
+
+mysql> delete from staff bno;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'bno' at line 1
+mysql> delete column bno from staff;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'column bno from staff' at line 1
+mysql> select * from staff;
++------+-------+-------+-------------------------+--------------+------------------+-----+------------+----------+-----------+-----+
+| Sno  | Fname | Lname | Address                 | TelNo        | Position         | Sex | DOB        | SALARY   | NIN       | Bno |
++------+-------+-------+-------------------------+--------------+------------------+-----+------------+----------+-----------+-----+
+| sa2  | minku | singh | punjab                  | 012333       | cm               | f   | 1992-02-02 |   111.00 |           |     |
+| SA9  | Mary  | Howe  | 2 Elm Place,Aberdeen    | NULL         | Assistant        | F   | 1970-02-19 |  9000.00 | WM532187D | B7  |
+| SG14 | David | Ford  | 63 Ashby St,Glasgow     | 0141-3392177 | Deputy           | M   | 1958-03-24 | 18000.00 | WL220658D | B3  |
+| SG37 | Ann   | Beech | 81 George St,Glasgow    | 0141-8483345 | Senior Assistant | F   | 1960-01-10 | 12000.00 | Wl432514C | B3  |
+| SG5  | Susan | Brand | 5 Gt Western Rd,Glasgow | 0141-3342001 | Manager          | F   | 1940-06-03 | 24000.00 | WK588932E | B3  |
+| SL21 | John  | White | 19 Taylor St,London     | 0171-8445112 | Manager          | M   | 1945-10-01 | 30000.00 | WK442011B | B5  |
+| SL41 | Julie | Lee   | 28 Malvern St, Kilburn  | 0181-5543541 | Assistant        | F   | 1965-06-13 |  9000.00 | WA290573K | B5  |
++------+-------+-------+-------------------------+--------------+------------------+-----+------------+----------+-----------+-----+
+7 rows in set (0.00 sec)
+

@@ -1,0 +1,14 @@
+mysql> describe premiership;
++--------+-------------+------+-----+---------+-------+
+| Field  | Type        | Null | Key | Default | Extra |
++--------+-------------+------+-----+---------+-------+
+| Team   | varchar(15) | NO   | PRI | NULL    |       |
+| Played | int(11)     | NO   |     | NULL    |       |
+| Points | int(11)     | NO   |     | NULL    |       |
++--------+-------------+------+-----+---------+-------+
+3 rows in set (0.05 sec)
+
+mysql> notee
+mysql> INSERT INTO PREMIERSHIP VALUES ('Chelsea', 12,13);
+ERROR 1062 (23000): Duplicate entry 'Chelsea' for key 'PRIMARY'
+mysql> notee
